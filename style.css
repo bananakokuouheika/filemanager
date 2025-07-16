@@ -1,0 +1,587 @@
+/* 既存のstyle.cssに追加または置き換え */
+
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    color: #007bff;
+    display: flex;
+    align-items: center;
+}
+
+header h1 .fas {
+    margin-right: 10px;
+    color: #28a745;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+.header-right span {
+    margin-right: 15px;
+    color: #555;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    text-decoration: none;
+    color: white; /* Default for primary/success */
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-success {
+    background-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.8em;
+}
+
+.btn-action {
+    margin-left: 5px;
+}
+
+/* Toolbar */
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    transition: background-color 0.3s ease; /* 選択モード時の背景色変化用 */
+}
+
+.toolbar button .fas {
+    margin-right: 6px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    padding: 10px 15px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 500;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb span {
+    color: #6c757d;
+}
+
+.breadcrumb .fas {
+    margin-right: 5px;
+    color: #6c757d;
+}
+
+/* Upload Container */
+.upload-container {
+    background-color: #e9f5e9;
+    border: 1px dashed #28a745;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.upload-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.upload-container input[type="file"] {
+    border: 1px solid #ced4da;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* Message Area (Snackbar/Toast) */
+.message-area {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, visibility 0.5s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 250px;
+    text-align: center;
+}
+
+.message-area.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.message-area.success {
+    background-color: #4CAF50; /* Green */
+}
+
+.message-area.error {
+    background-color: #f44336; /* Red */
+}
+
+.message-area.warning {
+    background-color: #ff9800; /* Orange */
+}
+
+.message-area.info {
+    background-color: #2196F3; /* Blue */
+}
+
+/* File List Table */
+.file-list-container {
+    overflow-x: auto;
+    position: relative; /* for drop-zone-overlay */
+}
+
+.file-list {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95em;
+    min-width: 600px; /* 小さな画面でスクロールできるように */
+}
+
+.file-list thead th {
+    background-color: #e9ecef;
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 2px solid #dee2e6;
+    color: #495057;
+}
+
+.file-list tbody td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #dee2e6;
+    white-space: nowrap; /* テキストの折り返しを防ぐ */
+    overflow: hidden;
+    text-overflow: ellipsis; /* はみ出したテキストを...で表示 */
+    max-width: 300px; /* 名前列の最大幅 */
+}
+
+.file-list tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+.file-list tbody tr.selected {
+    background-color: #e0f7fa; /* 明るい水色 */
+}
+
+.file-list .folder-link, .file-list .file-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.file-list .fas {
+    margin-right: 8px;
+    font-size: 1.1em;
+}
+
+/* File Type Icons (Colors based on Font Awesome classes) */
+.folder-icon { color: #ffc107; } /* Yellow for folders */
+.file-icon { color: #6c757d; } /* Default grey for files */
+.file-type-image { color: #28a745; } /* Green for images */
+.file-type-audio { color: #007bff; } /* Blue for audio */
+.file-type-video { color: #dc3545; } /* Red for video */
+.file-type-pdf { color: #dc3545; } /* Red for PDF */
+.file-type-archive { color: #ff9800; } /* Orange for archives */
+.file-type-text, .file-type-code { color: #6f42c1; } /* Purple for text/code */
+.file-type-excel { color: #21a366; } /* MS Excel Green */
+.file-type-word { color: #2b5797; } /* MS Word Blue */
+.file-type-powerpoint { color: #d04423; } /* MS PowerPoint Orange */
+
+
+/* Checkbox column adjustments */
+.file-list th:first-child,
+.file-list td:first-child {
+    width: 40px; /* チェックボックスの幅 */
+    text-align: center;
+    vertical-align: middle;
+    visibility: hidden; /* デフォルトで非表示 */
+    transition: visibility 0.3s ease;
+}
+
+body.select-mode-active .file-list th:first-child,
+body.select-mode-active .file-list td:first-child {
+    visibility: visible; /* 選択モード時のみ表示 */
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 10000;
+}
+
+.loading-spinner i {
+    font-size: 3em;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.loading-spinner span {
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.editor-modal-content {
+    max-width: 900px; /* エディタ用は広めに */
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.5em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.8em;
+    cursor: pointer;
+    color: #888;
+}
+
+.close-button:hover {
+    color: #555;
+}
+
+#modal-input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#modal-confirm-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1em;
+}
+
+/* Directory Tree for Move/Copy */
+.directory-tree {
+    border: 1px solid #ddd;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background-color: #fdfdfd;
+}
+
+.directory-tree ul {
+    list-style: none;
+    padding-left: 20px;
+    margin: 0;
+}
+
+.directory-tree li {
+    line-height: 1.8;
+}
+
+.directory-tree .folder-toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.directory-tree .folder-toggle .fas {
+    color: #ffc107;
+    margin-right: 0; /* adjust for flex gap */
+}
+
+.directory-tree .dir-node {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.directory-tree .dir-node:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.directory-tree .dir-node.selected {
+    background-color: #e0f7fa;
+    border-radius: 3px;
+    padding: 2px 5px;
+}
+
+.directory-tree .nested {
+    display: none;
+}
+
+.directory-tree .nested.active {
+    display: block;
+}
+
+/* Ace Editor Specifics */
+#editor {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.editor-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* Permisssions Editor */
+.permissions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+.permissions-table th, .permissions-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    vertical-align: middle;
+}
+.permissions-table th {
+    background-color: #f2f2f2;
+}
+.permissions-table td:first-child {
+    text-align: left;
+    font-weight: bold;
+}
+#permissions-editor p {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.95em;
+}
+
+/* Custom Context Menu */
+.context-menu {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    min-width: 150px;
+    border-radius: 4px;
+    overflow: hidden;
+    display: none; /* 初期は非表示 */
+}
+
+.context-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.context-menu li {
+    padding: 8px 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9em;
+}
+
+.context-menu li:hover {
+    background-color: #f0f0f0;
+}
+
+.context-menu li i {
+    width: 20px; /* アイコンの幅を揃える */
+    text-align: center;
+}
+
+/* ツールバーのボタンアイコンとテキストの間隔 */
+.toolbar button span {
+    margin-left: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px auto;
+        padding: 15px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-right {
+        margin-top: 10px;
+    }
+
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .toolbar button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .file-list tbody td {
+        padding: 8px 10px;
+    }
+
+    .modal-content {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+}
